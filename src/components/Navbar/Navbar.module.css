@@ -1,0 +1,20 @@
+.nav {
+    grid-area: nav;
+    color: #61dafb;
+    background-color: burlywood;
+    Text-align: center;
+  }
+
+  .item a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .item:hover {
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .item a.active {
+    color: gold;
+  }

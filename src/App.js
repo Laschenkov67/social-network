@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Route } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import UsersContainer from './components/Users/UsersContainer'
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import './App.css';
+import News from './components/News/News';
+import Music from './components/Music/Music';
+import Settings from './components/Settings/Settings';
+import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
-function App() {
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App-wrapper">
+      <HeaderContainer />
+      <Navbar />
+      <div className="App-wrapper-content">
+        <Route path="/profile/:userId?"
+          render={() => <ProfileContainer />} />
+        <Route exact path="/dialogs"
+          render={() => <DialogsContainer store={props.store} state={props.state}/>} />
+        <Route path="/users" render={() => <UsersContainer store={props.store} state={props.state}/>} />
+        <Route path="/news" component={News} />
+        <Route path="/music" component={Music} />
+        <Route path="/settings" component={Settings} />
+      </div>
     </div>
   );
 }
